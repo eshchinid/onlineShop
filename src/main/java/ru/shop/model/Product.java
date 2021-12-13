@@ -22,6 +22,7 @@ public class Product {
     }
 
     private void addProduct (String name, String description, Integer price, ProductCategory productCategory) {
+        nextId();
         this.name=name;
         this.description=description;
         this.price=price;
@@ -33,7 +34,6 @@ public class Product {
     }
 
     public Product (String name, String description, Integer price, ProductCategory productCategory) {
-        nextId();
         addProduct(name, description, price, productCategory);
         this.date = new Date();
     }
