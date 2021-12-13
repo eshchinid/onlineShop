@@ -22,11 +22,6 @@ public class Tests {
         products.add(new Product("XBOX", "Xbox series X", 60000, ProductCategory.technics));
         products.add(new Product("PS", "PlayStation 4", 50000, ProductCategory.technics));
 
-
-
-
-
-
         List<Product> foodList = products.stream().filter(pr -> pr.getProductCategory() == ProductCategory.Food).sorted(Comparator.comparing(Product::getName)).collect(Collectors.toList());
         List<Product> techList = products.stream().filter(pr -> pr.getProductCategory() == ProductCategory.technics).sorted(Comparator.comparing(Product::getName)).collect(Collectors.toList());
         List<Product> musList = products.stream().filter(pr -> pr.getProductCategory() == ProductCategory.musicalInstruments).sorted(Comparator.comparing(Product::getName)).collect(Collectors.toList());
@@ -74,8 +69,10 @@ public class Tests {
 //      хер знает почему, но нижнее условие не работает до конца
             String s = products.stream().filter(p-> p.getName().equalsIgnoreCase(request))
                             .findAny().toString();
-            String b = products.stream().filter(p-> p.getDescription().equals(request))
+            String b = products.stream().filter(p-> p.getDescription().toLowerCase().contains(request.toLowerCase()))
                     .findAny().toString();
+
+
 
             if (s != null){
                 System.out.println("Товаров найдено : " + "\n" + s);
