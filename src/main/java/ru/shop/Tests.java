@@ -3,10 +3,7 @@ package ru.shop;
 import ru.shop.model.Product;
 import ru.shop.model.ProductCategory;
 
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Tests {
@@ -14,7 +11,7 @@ public class Tests {
         List<Product> products = new LinkedList<>();
         products.add(new Product("Коровье молоко", "жирность 3,2%", 70, ProductCategory.Food));
         products.add(new Product("Гитара Gibson", "Gibson Les Poul 1987", 120000, ProductCategory.musicalInstruments));
-        products.add(new Product("Гитара", "ESP LTD Hatfield", 80000, ProductCategory.musicalInstruments));
+        products.add(new Product("Гитара ESP", "ESP LTD Hatfield", 80000, ProductCategory.musicalInstruments));
         products.add(new Product("Purina Pro Plan", "Корм для собак с тунцом", 7000, ProductCategory.animalFood));
         products.add(new Product("Acana", "Корм для кошек с курицей", 8000, ProductCategory.animalFood));
         products.add(new Product("Тунец", "Тунец атлантичский", 4000, ProductCategory.Food));
@@ -48,6 +45,20 @@ public class Tests {
             techList.forEach(System.out::println);
         } else if (choice == 4) {
             animalList.forEach(System.out::println);
+        } else if (choice == 5) {
+            System.out.println("Что искать?");
+            Scanner scanner1 = new Scanner(System.in);
+            String request = scanner1.nextLine();
+            System.out.println("Вы ввели:" + request);
+            products.stream().filter(r -> r.getName() == request).forEach(System.out::println);
+
+
+//            if (products.stream().filter(r -> Objects.equals(r.getName(),request)).toString() != null){
+//                System.out.println(products.stream().filter(r -> Objects.equals(r.getName(),request)).toString());
+//            } else if (products.stream().filter(r -> Objects.equals(r.getDescription(),request)).toString() !=null)
+//            {
+//                System.out.println(products.stream().filter(r -> Objects.equals(r.getDescription(),request)).toString());}
+//            else System.out.println("товара не найдено");
         }
 
 
